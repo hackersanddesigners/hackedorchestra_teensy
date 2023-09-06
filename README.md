@@ -2,7 +2,7 @@
 
 Documentation for teensy 4.0 examples for hacked orchestra workshops
 
-Teensy asics as per [this workshop](https://www.pjrc.com/store/audio_tutorial_kit.html). 
+Teensy basics as per [this workshop](https://www.pjrc.com/store/audio_tutorial_kit.html). 
 
 
 <img src="./images/flyer8.png" alt="" width="400"/> 
