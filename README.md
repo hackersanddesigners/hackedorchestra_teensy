@@ -5,10 +5,10 @@ Documentation for following [this workshop](https://www.pjrc.com/store/audio_tut
 
 ## BOM 
 
-* [Teensy 4.0 - without headers](https://www.tinytronics.nl/shop/en/development-boards/microcontroller-boards/teensy/teensy-4.0) € 27,50 via TinyTronics
-* [Teensy Audio Adapter Board for Teensy 4.0](https://www.tinytronics.nl/shop/en/development-boards/accessories/adapter-boards/teensy-audio-adapter-board-for-teensy-4.0) € 16,25 via TinyTronics
+* [Teensy 4.0 - without headers](https://www.tinytronics.nl/shop/en/development-boards/microcontroller-boards/teensy/teensy-4.0) € 27,50 via TinyTronics or Open Circuit
+* [Teensy Audio Adapter Board for Teensy 4.0](https://www.tinytronics.nl/shop/en/development-boards/accessories/adapter-boards/teensy-audio-adapter-board-for-teensy-4.0) € 16,25 via TinyTronics or Open Circuit
 * [Breakaway female headers row of 2, 3 and 4 positions](https://www.reichelt.nl/nl/nl/vrouwelijke-connector-2-54mm-1x20-scheidbaar-vertind-fis-bl1-20-z-p283794.html?&nbc=1) € 1,47 via Reichelt
-* [2x female headers with 11mm pins, 14 positions](https://www.tinytronics.nl/shop/nl/kabels-en-connectoren/connectoren/pin-headers/female/40-pins-header-female-11mm-pin-hoogte) € 1 via Tinytronics
+* [Teensy header kit](https://opencircuit.shop/product/teensy-header-kit) € 2 via Open Circuit 
 * [Condenser mic](https://www.tinytronics.nl/shop/en/sensors/sound/czn-15e-electret-condenser-microphone) € 0,50 via TinyTronics
 * [32GB *class A1* SD card](https://www.tinytronics.nl/shop/en/data-storage/sd-cards/kingston-canvas-select-plus-32gb-class-10-uhs-i-a1-microsd-card-with-sd-kaart-adapter) € 7,00 via TinyTronics
 * [Micro USB cable](https://www.tinytronics.nl/shop/en/cables-and-connectors/cables-and-adapters/usb/micro-usb/goobay-93918-micro-usb-cable-1m-black) € 2,25 via TinyTronics
