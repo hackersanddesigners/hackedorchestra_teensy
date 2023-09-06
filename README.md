@@ -1,7 +1,12 @@
 # hackedorchestra_teensy
-documentation for teensy 4.0 examples for hacked orchestra
 
-Documentation for following [this workshop](https://www.pjrc.com/store/audio_tutorial_kit.html). 
+Documentation for teensy 4.0 examples for hacked orchestra workshops
+
+Teensy asics as per [this workshop](https://www.pjrc.com/store/audio_tutorial_kit.html). 
+
+
+<img src="./images/flyer8.png" alt="" width="400"/> 
+
 
 ## BOM 
 
