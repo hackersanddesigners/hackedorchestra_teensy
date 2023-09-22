@@ -99,6 +99,28 @@ Lots of stuff, playing with mixers, filters, playback from SD card, or RAW sampl
 
 With the record example you can make a recording either with the mix or with the line in on the board. It generates a .raw file that you can import into Audacity and convert into something else. It overwrites the file every time you record and recording time is 9-s	10 secs or so
 
+## characters
+
+The idea is that the participants in the workshop pick a sensor (pickup coil, piezo, solar cell, dynamo, mic(?)) connect it to th amp and experiment to create an 'instrument' with it. 
+Then, when and if they have something that sounds reasonally nice, they pick one if 4/5 characters, these are filters created with the teensy (much like a guitar effect pedal). We call these *characters*.
+Each *character* is basically a teensy filter with some buttons/knobs to control the parameters. Volume can be controlled on the speaker. 
+
+1. Freeverb - input -> output. (heerko)
+   controls: knob 1 - mix (unfiltered/filtered)
+             knob 2 - roomsize
+             knob 3 - damping.
+
+2. Bitcrusher (heerko)
+   controls: crushBits/samplerate. could be knob or buttons. tbd. 
+3. Echo (loes)
+   controls: delay
+4. Flange (loes)
+   controls: ? (on/off)? numVoices?
+3. Pitchshift?
+
+
+
+
 
 ## Ideas
 
