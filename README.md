@@ -17,10 +17,9 @@ Teensy basics as per [this workshop](https://www.pjrc.com/store/audio_tutorial_k
 * [Condenser mic](https://www.tinytronics.nl/shop/en/sensors/sound/czn-15e-electret-condenser-microphone) € 0,50 via TinyTronics
 * [32GB *class A1* SD card](https://www.tinytronics.nl/shop/en/data-storage/sd-cards/kingston-canvas-select-plus-32gb-class-10-uhs-i-a1-microsd-card-with-sd-kaart-adapter) € 7,00 via TinyTronics
 * [Micro USB cable](https://www.tinytronics.nl/shop/en/cables-and-connectors/cables-and-adapters/usb/micro-usb/goobay-93918-micro-usb-cable-1m-black) € 2,25 via TinyTronics
-* [Breadboard 830 points](https://www.tinytronics.nl/shop/en/tools-and-mounting/prototyping-supplies/breadboards/breadboard-830-points) € 4,00 via TinyTronics
-* 3x [Momentary switch 12x12 mm](https://www.tinytronics.nl/shop/en/switches/manual-switches/pcb-switches/tactile-pushbutton-switch-momentary-4pin-12*12*7.3mm) € 0,25 each via TinyTronics
-* 3x [Button cap for momentary switch](https://www.tinytronics.nl/shop/en/components/knobs,-caps-and-covers/button-cap-for-tactile-pushbutton-switch-momentary-12x12x7.3mm-black) € 0,15 each via Tinytronics
-* 3x [potentiometer, breadboard compatible](https://www.tinytronics.nl/shop/en/components/resistors/potentiometers/100k%CF%89-potentiometer-standard-20mm) € 0,50 each via TinyTronics
+* [Breadboard 830 points for prototyping](https://www.tinytronics.nl/shop/en/tools-and-mounting/prototyping-supplies/breadboards/breadboard-830-points) € 4,00 via TinyTronics
+* 3x [Momentary switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/push-buttons-and-switches/black-button-7mm) € 0,41 each via TinyTronics
+* 3x [10k potentiometer, breadboard compatible](https://www.tinytronics.nl/shop/en/components/resistors/potentiometers/10k%CF%89-potmeter-standard) € 0,41 each via TinyTronics
 * A pair of simple jack headphones and a speaker with a 3.5mm jack-jack cable and/or adapter. 
 
 
