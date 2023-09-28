@@ -77,7 +77,7 @@ Upload simple blink sketch to check. The built-in LED is on pin 13 for teensy 4.
 All examples (incl the ones discussed [in video tutorial](https://www.pjrc.com/store/audio_tutorial_kit.html)) can be found under 
 > Examples > Audio > Tutorial
 
-Everything under "tutorial" is quite useful to take a look at first, additionally interesting example sketches for us: 
+Everything under "audio" is quite useful to take a look at first, additionally interesting example sketches for us: 
 
 * Granular
 * Guitar
