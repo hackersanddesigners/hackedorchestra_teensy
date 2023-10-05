@@ -84,7 +84,7 @@ void loop() {
   // calculate speed from knob 2
   float msec = 25.0 + (knobA2 * 75.0);
   // float ratio = powf(2.0, knobA3 * 2.0 - 1.0);  // 0.5 to 2.0 -- beastie boys
-  float ratio = powf(2.0, knobA2 * 6.0 - 3.0); // 0.125 to 8.0 -- daftpunky
+  float ratio = powf(2.0, knobA3 * 6.0 - 3.0); // 0.125 to 8.0 -- daftpunky
   granular1.setSpeed(ratio);
 
   // Button 1 starts Pitch Shift effect
