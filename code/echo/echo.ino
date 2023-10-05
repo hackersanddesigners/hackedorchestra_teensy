@@ -1,10 +1,18 @@
-#include <Audio.h>
-#include <Wire.h>
-#include <SPI.h>
-#include <SD.h>
-#include <SerialFlash.h>
-#include <Bounce.h>
+/** 
+  Echo for Hacked Orchestra
 
+  Pot 1 - A1 -> gain line in
+  Pot 2 - A2 -> delay time
+  Pot 3 - A3 -> decay
+  Pot 4 - A4 -> Reverb time
+  Btn 1 - D0 -> Toggle - effects on/off
+  Btn 2 - D1 -> Toggle - reverbe on/off
+  Btn 3 - D2 -> Momentary - Flange on
+
+**/
+
+#include <Audio.h>
+#include <Bounce.h>
 
 // GUItool: begin automatically generated code
 AudioInputI2S            i2s2;           //xy=75,158
@@ -19,18 +27,13 @@ AudioConnection          patchCord5(delay1, 0, i2s1, 1);
 AudioControlSGTL5000     sgtl5000_1;     //xy=481.33332562446594,297.8333282470703
 // GUItool: end automatically generated code
 
-Bounce button0 = Bounce(0, 15);
-Bounce button1 = Bounce(1, 15);
-Bounce button2 = Bounce(2, 15);  // 15 = 15 ms debounce time
-
-// Use these with the Teensy Audio Shield
-#define SDCARD_CS_PIN    10
-#define SDCARD_MOSI_PIN  7   // Teensy 4 ignores this, uses pin 11
-#define SDCARD_SCK_PIN   14  // Teensy 4 ignores this, uses pin 13
+Bounce button1 = Bounce(0, 15);
+Bounce button2 = Bounce(1, 15);
+Bounce button3 = Bounce(2, 15);  // 15 = 15 ms debounce time
 
 void setup() {
   Serial.begin(9600);
-  AudioMemory(160);     //working with delays requires more memory allocated!
+  AudioMemory(300);     //working with delays requires more memory allocated!
   sgtl5000_1.enable();            // enable control panel
   sgtl5000_1.volume(0.5);          // set volume (max 0.8 is good)
   sgtl5000_1.inputSelect(AUDIO_INPUT_LINEIN);
@@ -46,37 +49,29 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   // read pushbuttons
-  button0.update();
-  if (button0.fallingEdge()) {
-    // do something
-  }
-  button1.update();   
-  if (button1.fallingEdge()) {
-    //do something
-  }
+  button1.update();
   button2.update();
-  if (button2.fallingEdge()) {
-    //do something
-  }
+  button3.update();
+
+  // read knobs, scale to 0-1.0 numbers
+  float knobA1 = (float)analogRead(A1) / 1023.0;  // sets lineInLevel
+  float knobA2 = (float)analogRead(A2) / 1023.0;  // sets delay time
+  float knobA3 = (float)analogRead(A3) / 1023.0;  // sets decay
+  float knobA4 = (float)analogRead(A4) / 1023.0;  // set reverb room size
+
   // control the gain on line in w knob
-  int knob1 = analogRead(A1);
-  int gainLineIn = map(knob1, 0,1023,0,30);
-  sgtl5000_1.lineInLevel(gainLineIn); // is level of line in! 
-  Serial.print("gain Line In = ");
-  Serial.println(gainLineIn);
+  int gainLineIn = knobA1 * 30;
+  sgtl5000_1.lineInLevel(gainLineIn); // is level of line in!
 
   //control the decay of the feedback signal float 0-1 with 1 = no decay
-  int knob2 = analogRead(A2);
-  float feedback = (float)knob2 / 1050.0;
+  float feedback = knobA2;
   mixer1.gain(3, feedback);
   Serial.print("feedback decay = ");
   Serial.println(feedback);
 
   //control the delay time (ms)
-  int knob3 = analogRead(A3);
-  int delaytime = map(knob3, 0, 1023, 0, 400);
+  int delaytime = knobA3 * 400; //map(knob3, 0, 1023, 0, 400);
   delay1.delay(0, delaytime);   //length of delay in ms
   Serial.print("delaytime = ");
   Serial.println(delaytime);
