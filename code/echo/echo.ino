@@ -15,25 +15,26 @@
 #include <Bounce.h>
 
 // GUItool: begin automatically generated code
-AudioInputI2S i2s2;         //xy=300.066650390625,226
-AudioMixer4 mixer1;         //xy=471.066650390625,256
-AudioEffectDelay delay1;    //xy=471.066650390625,362
-AudioEffectReverb reverb1;  //xy=630.066650390625,344.066650390625
-AudioMixer4 mixer2;         //xy=779.066650390625,332.066650390625
-AudioMixer4 mixer3;         //xy=948.066650390625,240.06666564941406
-AudioOutputI2S i2s1;        //xy=1077.066650390625,238.00001525878906
-AudioConnection patchCord1(i2s2, 0, mixer1, 0);
-AudioConnection patchCord2(i2s2, 0, mixer3, 0);
-AudioConnection patchCord3(mixer1, delay1);
-AudioConnection patchCord4(delay1, 0, mixer1, 3);
-AudioConnection patchCord5(delay1, 0, reverb1, 0);
-AudioConnection patchCord6(delay1, 0, mixer2, 0);
-AudioConnection patchCord7(reverb1, 0, mixer2, 1);
-AudioConnection patchCord8(mixer2, 0, mixer3, 1);
-AudioConnection patchCord9(mixer3, 0, i2s1, 0);
-AudioConnection patchCord10(mixer3, 0, i2s1, 1);
-AudioControlSGTL5000 sgtl5000_1;  //xy=1073.066650390625,287
+AudioInputI2S            i2s2;           //xy=154.60000610351562,127.0999984741211
+AudioMixer4              mixer1;         //xy=325.6000061035156,157.0999984741211
+AudioEffectDelay         delay1;         //xy=325.6000061035156,263.0999984741211
+AudioMixer4              mixer3;         //xy=512.5999755859375,137.10000610351562
+AudioEffectReverb        reverb1;        //xy=635.5999755859375,169.10000610351562
+AudioMixer4              mixer2;         //xy=784.5999755859375,157.10000610351562
+AudioOutputI2S           i2s1;           //xy=931.6000061035156,139.0999984741211
+AudioConnection          patchCord1(i2s2, 0, mixer1, 0);
+AudioConnection          patchCord2(i2s2, 0, mixer3, 0);
+AudioConnection          patchCord3(mixer1, delay1);
+AudioConnection          patchCord4(delay1, 0, mixer1, 3);
+AudioConnection          patchCord5(delay1, 0, mixer3, 1);
+AudioConnection          patchCord6(mixer3, reverb1);
+AudioConnection          patchCord7(mixer3, 0, mixer2, 0);
+AudioConnection          patchCord8(reverb1, 0, mixer2, 1);
+AudioConnection          patchCord9(mixer2, 0, i2s1, 0);
+AudioConnection          patchCord10(mixer2, 0, i2s1, 1);
+AudioControlSGTL5000     sgtl5000_1;     //xy=927.6000061035156,188.0999984741211
 // GUItool: end automatically generated code
+
 
 Bounce button1 = Bounce(0, 15);
 Bounce button2 = Bounce(1, 15);
@@ -124,7 +125,7 @@ void loop() {
   if (button2.fallingEdge()) { button2_pressed = true; }
   if (button2.risingEdge()) { button2_pressed = false; }
 
-  float reverbTime = knobA1 * 10;
+  float reverbTime = knobA1 * 20;
   if (button2_pressed) {
     Serial.print("with reverbTime ");
     Serial.println(reverbTime);
