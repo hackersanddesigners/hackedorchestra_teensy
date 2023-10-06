@@ -40,6 +40,8 @@ Bounce button2 = Bounce(1, 15);
 Bounce button3 = Bounce(2, 15);  // 15 = 15 ms debounce time
 
 bool button2_pressed = false;
+unsigned long updateCounterMs;
+int lastDelayTime = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -65,9 +67,12 @@ void setup() {
   mixer3.gain(0, 1);
   mixer3.gain(1, 0);
 
+  reverb1.reverbTime(10);
 
   delay1.delay(0, 200);  //length of delay in ms
   delay(1000);
+
+  updateCounterMs = millis();
 }
 
 void loop() {
@@ -83,8 +88,8 @@ void loop() {
   float knobA4 = (float)analogRead(A4) / 1023.0;  // set reverb room size
 
   // control the gain on line in w knob
-  int gainLineIn = knobA1 * 30;
-  sgtl5000_1.lineInLevel(gainLineIn);  // is level of line in!
+  // int gainLineIn = knobA1 * 30;
+  // sgtl5000_1.lineInLevel(gainLineIn);  // is level of line in!
 
   //control the decay of the feedback signal float 0-1 with 1 = no decay
   float feedback = knobA2;
@@ -94,7 +99,13 @@ void loop() {
 
   //control the delay time (ms)
   int delaytime = knobA3 * 400;  //map(knob3, 0, 1023, 0, 400);
-  delay1.delay(0, delaytime);    //length of delay in ms
+  // calling update in the loop create noise, so we only update
+  // when changed, and account for some noise. 
+  if (delaytime < lastDelayTime - 5 || delaytime > lastDelayTime + 5) {
+    delay1.delay(0, delaytime);  //length of delay in ms
+    lastDelayTime = delaytime;
+  }
+
   Serial.print("delaytime = ");
   Serial.println(delaytime);
 
@@ -112,8 +123,8 @@ void loop() {
 
   if (button2.fallingEdge()) { button2_pressed = true; }
   if (button2.risingEdge()) { button2_pressed = false; }
-  
-  float reverbTime = knobA4 * 20;
+
+  float reverbTime = knobA1 * 10;
   if (button2_pressed) {
     Serial.print("with reverbTime ");
     Serial.println(reverbTime);
@@ -123,5 +134,7 @@ void loop() {
   } else {
     mixer2.gain(0, 1);
     mixer2.gain(1, 0);
+    reverb1.reverbTime(0);
   }
+
 }
