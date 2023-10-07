@@ -42,6 +42,10 @@ bool button2_pressed = false;
 #define GRANULAR_MEMORY_SIZE 12800  // enough for 290 ms at 44.1 kHz
 int16_t granularMemory[GRANULAR_MEMORY_SIZE];
 
+#define LED_PIN 13 // built-in led
+unsigned long timer = 0; // timer for blink led
+bool ledState = false;
+
 void setup() {
   Serial.begin(9600);
   AudioMemory(200);
@@ -49,6 +53,8 @@ void setup() {
   pinMode(0, INPUT_PULLUP);
   pinMode(1, INPUT_PULLUP);
   pinMode(2, INPUT_PULLUP);
+
+  pinMode(LED_PIN, OUTPUT);
 
   sgtl5000_1.enable();
   sgtl5000_1.volume(0.5);
@@ -63,6 +69,8 @@ void setup() {
 
   // the Granular effect requires memory to operate
   granular1.begin(granularMemory, GRANULAR_MEMORY_SIZE);
+  
+  timer = millis();
 }
 
 void loop() {
@@ -115,5 +123,11 @@ void loop() {
   } else {
     mixer2.gain(0, 1);
     mixer2.gain(1, 0);
+  }
+
+  if (millis() > timer + 500 ) {
+    digitalWrite(LED_PIN, ledState);
+    ledState = !ledState;
+    timer = millis();
   }
 }

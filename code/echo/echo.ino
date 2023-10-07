@@ -15,24 +15,24 @@
 #include <Bounce.h>
 
 // GUItool: begin automatically generated code
-AudioInputI2S            i2s2;           //xy=154.60000610351562,127.0999984741211
-AudioMixer4              mixer1;         //xy=325.6000061035156,157.0999984741211
-AudioEffectDelay         delay1;         //xy=325.6000061035156,263.0999984741211
-AudioMixer4              mixer3;         //xy=512.5999755859375,137.10000610351562
-AudioEffectReverb        reverb1;        //xy=635.5999755859375,169.10000610351562
-AudioMixer4              mixer2;         //xy=784.5999755859375,157.10000610351562
-AudioOutputI2S           i2s1;           //xy=931.6000061035156,139.0999984741211
-AudioConnection          patchCord1(i2s2, 0, mixer1, 0);
-AudioConnection          patchCord2(i2s2, 0, mixer3, 0);
-AudioConnection          patchCord3(mixer1, delay1);
-AudioConnection          patchCord4(delay1, 0, mixer1, 3);
-AudioConnection          patchCord5(delay1, 0, mixer3, 1);
-AudioConnection          patchCord6(mixer3, reverb1);
-AudioConnection          patchCord7(mixer3, 0, mixer2, 0);
-AudioConnection          patchCord8(reverb1, 0, mixer2, 1);
-AudioConnection          patchCord9(mixer2, 0, i2s1, 0);
-AudioConnection          patchCord10(mixer2, 0, i2s1, 1);
-AudioControlSGTL5000     sgtl5000_1;     //xy=927.6000061035156,188.0999984741211
+AudioInputI2S i2s2;         //xy=154.60000610351562,127.0999984741211
+AudioMixer4 mixer1;         //xy=325.6000061035156,157.0999984741211
+AudioEffectDelay delay1;    //xy=325.6000061035156,263.0999984741211
+AudioMixer4 mixer3;         //xy=512.5999755859375,137.10000610351562
+AudioEffectReverb reverb1;  //xy=635.5999755859375,169.10000610351562
+AudioMixer4 mixer2;         //xy=784.5999755859375,157.10000610351562
+AudioOutputI2S i2s1;        //xy=931.6000061035156,139.0999984741211
+AudioConnection patchCord1(i2s2, 0, mixer1, 0);
+AudioConnection patchCord2(i2s2, 0, mixer3, 0);
+AudioConnection patchCord3(mixer1, delay1);
+AudioConnection patchCord4(delay1, 0, mixer1, 3);
+AudioConnection patchCord5(delay1, 0, mixer3, 1);
+AudioConnection patchCord6(mixer3, reverb1);
+AudioConnection patchCord7(mixer3, 0, mixer2, 0);
+AudioConnection patchCord8(reverb1, 0, mixer2, 1);
+AudioConnection patchCord9(mixer2, 0, i2s1, 0);
+AudioConnection patchCord10(mixer2, 0, i2s1, 1);
+AudioControlSGTL5000 sgtl5000_1;  //xy=927.6000061035156,188.0999984741211
 // GUItool: end automatically generated code
 
 
@@ -43,6 +43,10 @@ Bounce button3 = Bounce(2, 15);  // 15 = 15 ms debounce time
 bool button2_pressed = false;
 unsigned long updateCounterMs;
 int lastDelayTime = 0;
+
+#define LED_PIN 13 // built-in led
+unsigned long timer = 0; // timer for blink led
+bool ledState = false;
 
 void setup() {
   Serial.begin(9600);
@@ -72,8 +76,8 @@ void setup() {
 
   delay1.delay(0, 200);  //length of delay in ms
   delay(1000);
-
-  updateCounterMs = millis();
+  
+  timer = millis();
 }
 
 void loop() {
@@ -101,7 +105,7 @@ void loop() {
   //control the delay time (ms)
   int delaytime = knobA3 * 400;  //map(knob3, 0, 1023, 0, 400);
   // calling update in the loop create noise, so we only update
-  // when changed, and account for some noise. 
+  // when changed, and account for some noise.
   if (delaytime < lastDelayTime - 5 || delaytime > lastDelayTime + 5) {
     delay1.delay(0, delaytime);  //length of delay in ms
     lastDelayTime = delaytime;
@@ -138,4 +142,9 @@ void loop() {
     reverb1.reverbTime(0);
   }
 
+  if (millis() > timer + 500) {
+    digitalWrite(LED_PIN, ledState);
+    ledState = !ledState;
+    timer = millis();
+  }
 }
