@@ -23,22 +23,35 @@ This work is inspired by Nic Collins' *Handmade Electronic Music* and Paul Stoff
 * [Breakaway male header 90 degrees](https://www.tinytronics.nl/shop/en/cables-and-connectors/connectors/pin-headers/male/40-pins-header-male-90-degrees) € 0,50 via TinyTronics 
 * [Female header 11 mm pin height, scored and broken into 2 rows of 14 positions](https://www.tinytronics.nl/shop/en/cables-and-connectors/connectors/pin-headers/female/40-pins-header-female-11mm-pin-height) € 1 via TinyTronics
 * [Micro USB cable](https://www.tinytronics.nl/shop/en/cables-and-connectors/cables-and-adapters/usb/micro-usb/micro-usb-cable-50cm) € 1,24 via TinyTronics
-* 1x [Momentary switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/push-buttons-and-switches/black-button-7mm) € 0,41 each via TinyTronics
 * 4x [10k potentiometer, breadboard compatible](https://www.tinytronics.nl/shop/en/components/resistors/potentiometers/10k%CF%89-potmeter-standard) € 0,41 each via TinyTronics
-* 1x [toggle switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/toggle-switches/standard-built-in-flip-switch-mts-102) € 0,60 via TinyTronics
-* A power bank (or plug USB cable into laptop or wall socket adapter)
-* [Jack chassis 6.3 mm - x2](https://www.allekabels.nl/jack-stekker/42/1307777/jack-chassisdeel.html) € 0,99 alle kabels
+* Dupont jumper wires, male-male and male-female
+* 2x[Jack chassis 6.3 mm](https://www.allekabels.nl/jack-stekker/42/1307777/jack-chassisdeel.html) € 0,99 alle kabels
 * [6,3 mm jack patch cables, set](https://www.conrad.nl/nl/p/paccs-jack-kabel-6x-jackplug-male-6-3-mm-6x-jackplug-male-6-3-mm-30-00-cm-meerkleurig-301277.html) € 6.99 Conrad 
 * battery-powered mini guitar amp with 6.3 mm jack line in/out [e.g.](https://www.thomannmusic.com/harley_benton_ma_5_miniamp.htm) € 15
-* [Large breadboard](https://www.tinytronics.nl/shop/en/tools-and-mounting/prototyping-supplies/breadboards/breadboard-830-points) € 3,31 tinytronics
-* Dupont jumper wires, male-male and male-female
 * [Piezo transducers](https://www.tinytronics.nl/shop/en/audio/speakers/buzzers/piezo-electronic-buzzer-with-soldered-wires-35mm) € 0,41 Tinytronics
 * Bicycle dynamos, second-hand/salvaged
-* [2x Solar cells 5V ](https://www.tinytronics.nl/shop/en/power/solar-energy/solar-panels/solar-panel-5v-200ma-110x80mm) € 2,89
+* 2x[Solar cells 5V ](https://www.tinytronics.nl/shop/en/power/solar-energy/solar-panels/solar-panel-5v-200ma-110x80mm) € 2,89
 * [Telephone pick-up mic](https://www.amazon.com/Telephone-Microphone-Suction-Cup-Pickup/dp/B0034I75IK) € 8
 * [Terminal strip](https://www.tinytronics.nl/shop/en/cables-and-connectors/connectors/screw-terminals/terminal-strip-12-lanes) € 1,24 Tinytronics
 * [Shielded audio cable](https://www.conrad.nl/nl/p/bkl-electronic-1509008-audiokabel-1-x-0-22-mm-zwart-per-meter-457893.html) € 1,49 per meter, Conrad
-* [Solderable mono jack plugs 6.35 mm € 0,44](https://www.kabelshop.nl/Nedis-6-35-mm-jack-plug-Nedis-Mono-Mannelijk-CAVC23980BK-i15077-t9799.html)
+* 4x [Solderable mono jack plugs 6.35 mm € 0,44](https://www.kabelshop.nl/Nedis-6-35-mm-jack-plug-Nedis-Mono-Mannelijk-CAVC23980BK-i15077-t9799.html)
+
+
+**Plus:for version with breadboard**
+* [Large breadboard](https://www.tinytronics.nl/shop/en/tools-and-mounting/prototyping-supplies/breadboards/breadboard-830-points) € 3,31 tinytronics
+* A power bank (or plug USB cable into laptop or wall socket adapter)
+* [momentary switch 12mm](https://www.tinytronics.nl/shop/en/switches/manual-switches/pcb-switches/tactile-pushbutton-switch-momentary-4pin-12*12*7.3mm) € 0,12 via tinytronics
+* [cap for momentary switch 12 mm](https://www.tinytronics.nl/shop/en/components/knobs,-caps-and-covers/button-cap-for-tactile-pushbutton-switch-momentary-12x12x7.3mm-yellow) €0,12 via Tinytronics
+* [toggle switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/slide-switches/small-switch-for-pcb-or-breadboard) € 0,17 via tinytronics
+
+
+**Plus: for version inside a case** 
+* 1x [Momentary switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/push-buttons-and-switches/black-button-7mm) € 0,41 each via TinyTronics
+* 1x [toggle switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/toggle-switches/standard-built-in-flip-switch-mts-102) € 0,60 via TinyTronics
+* [LilyGO TTGO 18650 battery charging board](https://www.tinytronics.nl/shop/en/power/bms-and-chargers/li-ion-and-li-po/with-protection-circuit/lilygo-ttgo-t-bat-with-18650-battery-holder-cn3065) € 4,55 via tinytronics
+* [18650 li-ion battery 3500mAh/10A](https://www.tinytronics.nl/shop/en/power/batteries/18650/lg-18650-li-ion-battery-3400mah-10a-inr18650-mj1) € 4,96 via Tinytronics
+* [JST-PH compatibel connector, 2 pos](https://www.tinytronics.nl/shop/en/cables-and-connectors/cables-and-adapters/jst-compatible/jst-2.0mm-connector-with-cable-ph2.0-2-pins) € 0,33 via Tinytronics
+
 
 
 ## Assembling the circuit
