@@ -55,13 +55,17 @@ The teensy board will be pressed into the breadboard, the male pins of the femal
 * solder the male header strips to the bottom of the audio shield
 * solder the small angled headers to the line in and line out on the audio shield 
 
-<img src="./images/fritz.png" alt="" width="800"/> 
+<img src="./images/placeholder.png" alt="" width="400"/> 
 
-<img src="./images/audioshield_lineinout.png" alt="" width="800"/> 
 
 * assemble the breadboard following the picture below
 * connect a piezo to the line in on the audio shield, and a jack cable on line out (goes to speaker)
 * press the audio shield on top of the teensy
+
+<img src="./images/fritz.png" alt="" width="800"/> 
+
+<img src="./images/audioshield_lineinout.png" alt="" width="400"/> 
+
 
 
 ### Assembling inside a box
