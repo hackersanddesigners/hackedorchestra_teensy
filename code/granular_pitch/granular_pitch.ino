@@ -6,8 +6,8 @@
   Pot 3 - A3 -> Granular speed ratio
   Pot 4 - A4 -> Reverb time
   Btn 1 - D0 -> Toggle - effects on/off
-  Btn 2 - D1 -> Toggle - reverbe on/off
-  Btn 3 - D2 -> Momentary - Flange on
+  Btn 2 - D1 -> Momentary switch - reverb on/off
+  Btn 3 - D2 -> Momentary - Flange on >> NOT USED 
 
 **/
 
