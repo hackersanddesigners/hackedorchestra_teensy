@@ -46,8 +46,8 @@ This work is inspired by Nic Collins' *Handmade Electronic Music* and Paul Stoff
 * Score the straight male and female header strips with a stanley knife or dremel and break them into rows of 14. 
 * break two pieces from the 90 degree angled header: one with 2 positions and one with 3 positions. 
 
-<img src="./images/header_bent1.jpeg" alt="" width="400"/> 
-<img src="./images/header_bent1.jpeg" alt="" width="400"/> 
+<img src="./images/header_bent1.jpeg" alt="" width="300"/> 
+<img src="./images/header_bent2.jpeg" alt="" width="300"/> 
 
 
 ### Assembling with a breadboard
@@ -60,7 +60,7 @@ The teensy board will be pressed into the breadboard, the male pins of the femal
 * assemble the breadboard following the picture below
 * press the audio shield on top of the teensy 
 
-<img src="./images/fritz.png" alt="" width="400"/> 
+<img src="./images/fritz.png" alt="" width="800"/> 
 
 
 ### Assembling inside a box
@@ -72,8 +72,8 @@ This requires a slightly different approach because stacking the headers like we
 * solder the straight male header strips to the audio shield
 * solder the small angled headers to the line in and line out on the audio shield
 
-<img src="./images/shield_soldering.png" alt="" width="600"/> 
-<img src="./images/teensy_soldering.jpeg" alt="" width="600"/> 
+<img src="./images/shield_soldering.png" alt="" width="500"/> 
+<img src="./images/teensy_soldering.jpeg" alt="" width="500"/> 
 
 
 ## Install for Mac & Arduino 2.2.x.
@@ -93,7 +93,7 @@ Installing separate Teensy Loader is not necessary, it comes with board install.
 
 More info on other OS: [https://www.pjrc.com/teensy/td_download.html](https://www.pjrc.com/teensy/td_download.html)
 
-<img src="./images/boardsmanager.png" alt="" width="400"/> 
+<img src="./images/boardsmanager.png" alt="" width="300"/> 
 
 
 ### Choosing board & port
@@ -157,7 +157,7 @@ Now that everything works we can upload the code for the sound parasites. There'
 
 Below is the pinout of the Teensy 4.0. You can see there's a built-in LED on pin13, and pins 14-23 can also be used as analog pins (A0-A9). The pins marked with PWM can be used for analog writing to outputs (e.g. fading LEDs or spinning motors faster and slower).
 
-<img src="./images/teensypinout.png" alt="" width="700"/> 
+<img src="./images/teensypinout.png" alt="" width="500"/> 
 
 ## Note on recording and playback (not used here)
 
