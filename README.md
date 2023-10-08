@@ -51,6 +51,7 @@ This work is inspired by Nic Collins' *Handmade Electronic Music* and Paul Stoff
 * [LilyGO TTGO 18650 battery charging board](https://www.tinytronics.nl/shop/en/power/bms-and-chargers/li-ion-and-li-po/with-protection-circuit/lilygo-ttgo-t-bat-with-18650-battery-holder-cn3065) € 4,55 via tinytronics
 * [18650 li-ion battery 3500mAh/10A](https://www.tinytronics.nl/shop/en/power/batteries/18650/lg-18650-li-ion-battery-3400mah-10a-inr18650-mj1) € 4,96 via Tinytronics
 * [JST-PH compatibel connector, 2 pos](https://www.tinytronics.nl/shop/en/cables-and-connectors/cables-and-adapters/jst-compatible/jst-2.0mm-connector-with-cable-ph2.0-2-pins) € 0,33 via Tinytronics
+* [perfboard 2.54 mm spacing with lanes/strips](https://www.tinytronics.nl/shop/en/tools-and-mounting/prototyping-supplies/experiment-pcbs/experiment-pcb-6.5cm*14.5cm-lanes) €1,65 via TinyTronics
 
 
 
