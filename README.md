@@ -14,8 +14,8 @@ This work is inspired by Nic Collins' *Handmade Electronic Music* and Paul Stoff
 
 ## BOM 
 
-<img src="./images/teensy4.0.png" alt="" width="300"/> 
-<img src="./images/audioshield.png" alt="" width="300"/> 
+<img src="./images/teensy4.0.png" alt="" width="200"/> 
+<img src="./images/audioshield.png" alt="" width="200"/> 
 
 * [Teensy 4.0 - without headers](https://www.tinytronics.nl/shop/en/development-boards/microcontroller-boards/teensy/teensy-4.0) € 27,50 via TinyTronics or Open Circuit
 * [Teensy Audio Adapter Board for Teensy 4.0](https://www.tinytronics.nl/shop/en/development-boards/accessories/adapter-boards/teensy-audio-adapter-board-for-teensy-4.0) € 16,25 via TinyTronics or Open Circuit
@@ -46,9 +46,6 @@ This work is inspired by Nic Collins' *Handmade Electronic Music* and Paul Stoff
 * Score the straight male and female header strips with a stanley knife or dremel and break them into rows of 14. 
 * break two pieces from the 90 degree angled header: one with 2 positions and one with 3 positions. 
 
-<img src="./images/header_bent1.jpeg" alt="" width="300"/> 
-<img src="./images/header_bent2.jpeg" alt="" width="300"/> 
-
 
 ### Assembling with a breadboard
 
@@ -72,6 +69,8 @@ This requires a slightly different approach because stacking the headers like we
 * solder the straight male header strips to the audio shield
 * solder the small angled headers to the line in and line out on the audio shield
 
+<img src="./images/header_bent1.jpeg" alt="" width="300"/> 
+<img src="./images/header_bent2.jpeg" alt="" width="300"/> 
 <img src="./images/shield_soldering.png" alt="" width="500"/> 
 <img src="./images/teensy_soldering.jpeg" alt="" width="500"/> 
 
