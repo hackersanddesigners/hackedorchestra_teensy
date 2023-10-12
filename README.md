@@ -1,60 +1,120 @@
-# hackedorchestra_teensy
-
-Documentation for teensy 4.0 examples for hacked orchestra workshops
-
-Teensy basics as per [this workshop](https://www.pjrc.com/store/audio_tutorial_kit.html). 
-
-
 <img src="./images/flyer8.png" alt="" width="400"/> 
+
+# HACKED ORCHESTRA - TEENSY WORKSHOP
+
+Documentation for Sound Parasites developed for the Hacked Orchestra workshops (H&D, Ghenwa Noiré, Sonic Acts, Muziekgebouw aan het IJ, funded by AFK and Stifo). We've built two types of sound parasites to be used with active components on the line in (e.g. bicycle dynamos, solar panels, piezo transducers, pick up coils) that pick up sounds around us hidden in textures and different materials. One sound parasite adds an echo/delay and the other one adds a granular effect and pitchshifting. Both have a reverb switch implemented as well. 
+
+The sound parasites can be mounted in tin cans (saluting the early DIY electronic instrument builders), but for the purposes of this workshop we will stick to breadboarding because it is easier to troubleshoot in a workshop setting.
+
+This work is inspired by Nic Collins' *Handmade Electronic Music* and Paul Stoffsregen's work on the Teensy + Audio Module as shown in [this workshop](https://www.pjrc.com/store/audio_tutorial_kit.html). 
+
+
+<img src="./images/elisabethbas.jpeg" alt="" width="600"/> 
 
 
 ## BOM 
 
+<img src="./images/teensy4.0.png" alt="" width="200"/> 
+<img src="./images/audioshield.png" alt="" width="200"/> 
+
 * [Teensy 4.0 - without headers](https://www.tinytronics.nl/shop/en/development-boards/microcontroller-boards/teensy/teensy-4.0) € 27,50 via TinyTronics or Open Circuit
 * [Teensy Audio Adapter Board for Teensy 4.0](https://www.tinytronics.nl/shop/en/development-boards/accessories/adapter-boards/teensy-audio-adapter-board-for-teensy-4.0) € 16,25 via TinyTronics or Open Circuit
-* [Breakaway female headers row of 2, 3 and 4 positions](https://www.reichelt.nl/nl/nl/vrouwelijke-connector-2-54mm-1x20-scheidbaar-vertind-fis-bl1-20-z-p283794.html?&nbc=1) € 1,47 via Reichelt
-* [Teensy header kit](https://opencircuit.shop/product/teensy-header-kit) € 2 via Open Circuit 
-* [Condenser mic](https://www.tinytronics.nl/shop/en/sensors/sound/czn-15e-electret-condenser-microphone) € 0,50 via TinyTronics
-* [32GB *class A1* SD card](https://www.tinytronics.nl/shop/en/data-storage/sd-cards/kingston-canvas-select-plus-32gb-class-10-uhs-i-a1-microsd-card-with-sd-kaart-adapter) € 7,00 via TinyTronics
-* [Micro USB cable](https://www.tinytronics.nl/shop/en/cables-and-connectors/cables-and-adapters/usb/micro-usb/goobay-93918-micro-usb-cable-1m-black) € 2,25 via TinyTronics
-* [Breadboard 830 points for prototyping](https://www.tinytronics.nl/shop/en/tools-and-mounting/prototyping-supplies/breadboards/breadboard-830-points) € 4,00 via TinyTronics
-* 3x [Momentary switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/push-buttons-and-switches/black-button-7mm) € 0,41 each via TinyTronics
-* 3x [10k potentiometer, breadboard compatible](https://www.tinytronics.nl/shop/en/components/resistors/potentiometers/10k%CF%89-potmeter-standard) € 0,41 each via TinyTronics
-* A pair of simple jack headphones and a speaker with a 3.5mm jack-jack cable and/or adapter. 
+* [Male pin header, 2x 14 positions](https://www.tinytronics.nl/shop/en/cables-and-connectors/connectors/pin-headers/male/40-pins-header-male) € 0,50 via TinyTronics
+* [Breakaway male header 90 degrees](https://www.tinytronics.nl/shop/en/cables-and-connectors/connectors/pin-headers/male/40-pins-header-male-90-degrees) € 0,50 via TinyTronics 
+* [Female header 11 mm pin height, scored and broken into 2 rows of 14 positions](https://www.tinytronics.nl/shop/en/cables-and-connectors/connectors/pin-headers/female/40-pins-header-female-11mm-pin-height) € 1 via TinyTronics
+* [Micro USB cable](https://www.tinytronics.nl/shop/en/cables-and-connectors/cables-and-adapters/usb/micro-usb/micro-usb-cable-50cm) € 1,24 via TinyTronics
+* 4x [10k potentiometer, breadboard compatible](https://www.tinytronics.nl/shop/en/components/resistors/potentiometers/10k%CF%89-potmeter-standard) € 0,41 each via TinyTronics
+* Dupont jumper wires, male-male and male-female
+* 2x[Jack chassis 6.3 mm](https://www.allekabels.nl/jack-stekker/42/1307777/jack-chassisdeel.html) € 0,99 alle kabels
+* [6,3 mm jack patch cables, set](https://www.conrad.nl/nl/p/paccs-jack-kabel-6x-jackplug-male-6-3-mm-6x-jackplug-male-6-3-mm-30-00-cm-meerkleurig-301277.html) € 6.99 Conrad 
+* battery-powered mini guitar amp with 6.3 mm jack line in/out [e.g.](https://www.thomannmusic.com/harley_benton_ma_5_miniamp.htm) € 15
+* [Piezo transducers](https://www.tinytronics.nl/shop/en/audio/speakers/buzzers/piezo-electronic-buzzer-with-soldered-wires-35mm) € 0,41 Tinytronics
+* Bicycle dynamos, second-hand/salvaged
+* 2x[Solar cells 5V ](https://www.tinytronics.nl/shop/en/power/solar-energy/solar-panels/solar-panel-5v-200ma-110x80mm) € 2,89
+* [Telephone pick-up mic](https://www.amazon.com/Telephone-Microphone-Suction-Cup-Pickup/dp/B0034I75IK) € 8
+* [Terminal strip](https://www.tinytronics.nl/shop/en/cables-and-connectors/connectors/screw-terminals/terminal-strip-12-lanes) € 1,24 Tinytronics
+* [Shielded audio cable](https://www.conrad.nl/nl/p/bkl-electronic-1509008-audiokabel-1-x-0-22-mm-zwart-per-meter-457893.html) € 1,49 per meter, Conrad
+* 4x [Solderable mono jack plugs 6.35 mm € 0,44](https://www.kabelshop.nl/Nedis-6-35-mm-jack-plug-Nedis-Mono-Mannelijk-CAVC23980BK-i15077-t9799.html)
 
 
-## Soldering the shield
-
-[Tips, tricks pics]
-
-## Install for Mac & Arduino 1.8.x
-
-More info on other OS: [https://www.pjrc.com/teensy/td_download.html](https://www.pjrc.com/teensy/td_download.html)
-
-
-### Install Teensyduino software (full package)
-
-Looks like Arduino but works w Teensy without having to use additional teensyloader software, this is all included. 
-
-Download Macintosh Complete installer for Arduino 1.8: [https://www.pjrc.com/teensy/td_158/Teensyduino_MacOS_Catalina.zip](https://www.pjrc.com/teensy/td_158/Teensyduino_MacOS_Catalina.zip)
-
-Drag Teensyduino.app to applications. 
-
-All programming should be done in Teensyduino software (not Arduino IDE)
+**Plus:for version with breadboard**
+* [Large breadboard](https://www.tinytronics.nl/shop/en/tools-and-mounting/prototyping-supplies/breadboards/breadboard-830-points) € 3,31 tinytronics
+* A power bank (or plug USB cable into laptop or wall socket adapter)
+* [momentary switch 12mm](https://www.tinytronics.nl/shop/en/switches/manual-switches/pcb-switches/tactile-pushbutton-switch-momentary-4pin-12*12*7.3mm) € 0,12 via tinytronics
+* [cap for momentary switch 12 mm](https://www.tinytronics.nl/shop/en/components/knobs,-caps-and-covers/button-cap-for-tactile-pushbutton-switch-momentary-12x12x7.3mm-yellow) €0,12 via Tinytronics
+* [toggle switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/slide-switches/small-switch-for-pcb-or-breadboard) € 0,17 via tinytronics
 
 
-### Board manager
+**Plus: for version inside a case** 
+* 1x [Momentary switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/push-buttons-and-switches/black-button-7mm) € 0,41 each via TinyTronics
+* 1x [toggle switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/toggle-switches/standard-built-in-flip-switch-mts-102) € 0,60 via TinyTronics
+* [LilyGO TTGO 18650 battery charging board](https://www.tinytronics.nl/shop/en/power/bms-and-chargers/li-ion-and-li-po/with-protection-circuit/lilygo-ttgo-t-bat-with-18650-battery-holder-cn3065) € 4,55 via tinytronics
+* [18650 li-ion battery 3500mAh/10A](https://www.tinytronics.nl/shop/en/power/batteries/18650/lg-18650-li-ion-battery-3400mah-10a-inr18650-mj1) € 4,96 via Tinytronics
+* [JST-PH compatibel connector, 2 pos](https://www.tinytronics.nl/shop/en/cables-and-connectors/cables-and-adapters/jst-compatible/jst-2.0mm-connector-with-cable-ph2.0-2-pins) € 0,33 via Tinytronics
+* [perfboard 2.54 mm spacing with lanes/strips](https://www.tinytronics.nl/shop/en/tools-and-mounting/prototyping-supplies/experiment-pcbs/experiment-pcb-6.5cm*14.5cm-lanes) €1,65 via TinyTronics
 
-Add link below to the JSON board manager URL in the preference panels: 
+
+
+## Assembling the circuit
+
+* Score the straight male and female header strips with a stanley knife or dremel and break them into rows of 14. 
+* break two pieces from the 90 degree angled header: one with 2 positions and one with 3 positions. 
+
+
+### Assembling with a breadboard
+
+The teensy board will be pressed into the breadboard, the male pins of the female header should stick out of the bottom of the board. The audio shield will go on top of it, so needs the male header pins sticking out downwards also. So we want to: 
+
+* Solder the female header strips with the long legs on top of the teensy board 
+* solder the male header strips to the bottom of the audio shield
+* solder the small angled headers to the line in and line out on the audio shield 
+
+<img src="./images/placeholder.png" alt="" width="400"/> 
+
+
+* assemble the breadboard following the picture below
+* connect a piezo to the line in on the audio shield, and a jack cable on line out (goes to speaker)
+* press the audio shield on top of the teensy
+
+<img src="./images/fritz.png" alt="" width="800"/> 
+
+<img src="./images/audioshield_lineinout.png" alt="" width="400"/> 
+
+
+
+### Assembling inside a box
+
+This requires a slightly different approach because stacking the headers like we did for the breadboard makes the stack really high. So we will bend the stacking headers outwards to keep it more flat.
+
+* bend the female headers with the long leg into a 90 degree angle: stick one into the holes of the board but not all the way (leave 1 mm to allow for bending) and bend them to 90 degree angle.  
+* solder them to the teensy board
+* solder the straight male header strips to the audio shield
+* solder the small angled headers to the line in and line out on the audio shield
+
+<img src="./images/header_bent1.jpeg" alt="" width="300"/> 
+<img src="./images/header_bent2.jpeg" alt="" width="300"/> 
+<img src="./images/shield_soldering.png" alt="" width="500"/> 
+<img src="./images/teensy_soldering.jpeg" alt="" width="500"/> 
+
+
+## Install for Mac & Arduino 2.2.x.
+
+Add link below to the JSON board manager URL in the preference panel of Arduino IDE: 
 
 ```
 https://www.pjrc.com/teensy/package_teensy_index.json
 ```
 
+<img src="./images/pref_pane.png" alt="" width="600"/> 
+
+
 Then install via > Tools > Boards > Boards Manager (search for "Teensy")
 
 Installing separate Teensy Loader is not necessary, it comes with board install. 
 
+More info on other OS: [https://www.pjrc.com/teensy/td_download.html](https://www.pjrc.com/teensy/td_download.html)
+
+<img src="./images/boardsmanager.png" alt="" width="300"/> 
 
 
 ### Choosing board & port
@@ -70,64 +130,107 @@ When plugged in, a section called "Teensy Ports" shows up under > Tools > Port. 
 There might sometimes be some hassle with ports, then hit boot button and try again
 
 
-## Example files
+## Hardware test
 
-Upload simple blink sketch to check. The built-in LED is on pin 13 for teensy 4.0
+First we want to check if all the hardware is wired correctly and working. Open the "hardware_test" from the code folder. This allows us to check the following: 
 
-All examples (incl the ones discussed [in video tutorial](https://www.pjrc.com/store/audio_tutorial_kit.html)) can be found under 
-> Examples > Audio > Tutorial
+* turn on LED to show board is powered and working
+* show values of the switches (0 or 1) and potmeters (0-1023) via the serial monitor
+* play a beep that we should hear from the speaker we attached
+* check the line in is working with a feedthrough code (what comes in should come out the speaker)
 
-Everything under "audio" is quite useful to take a look at first, additionally interesting example sketches for us: 
-
-* Granular
-* Guitar
-* Recorder
-* SimpleDrum
+Upload the sketch and open the serial monitor. Check that the values for the pots and switches change when you press or turn them. Check the line in with a piezo disk. 
 
 
 ## Audio system design tool 
 
+The hardware test defines a the audio elements above the setup. This is generated with a special Teensy Design system with a node based GUI. Copy paste these elements from the code and import them into the design tool with the IMPORT button. It will show you which elements are in the design and allows you to look up parameters of the different functions. This is useful if you want to change the code later: it tells you what is possible with these libraries.
+
 [https://www.pjrc.com/teensy/gui/index.html](https://www.pjrc.com/teensy/gui/index.html)
 
->> Open in **SAFARI**! In Firefox you can drag and drop but not delete things.
-
-Lots of stuff, playing with mixers, filters, playback from SD card, or RAW samples included in Arduino code etc
+Open in **SAFARI**! In Firefox you can drag and drop but not delete things.
 
 
-## Note on recording and playback
+## Our sound parasites
+
+Now that everything works we can upload the code for the sound parasites. There's two types: one with echo/delay and one with a granular effect and pitchshifting. Both have a reverb switch as well. 
+
+### Granular Effect / Pitch shift
+
+- Pot 1 - A1 -> Input gain
+- Pot 2 - A2 -> Granular pitchShift grainLength
+- Pot 3 - A3 -> Granular speed ratio
+- Pot 4 - A4 -> Reverb time
+- Btn 1 - D0 -> Toggle - effects on/off
+- Btn 2 - D1 -> Momentary switch - reverb on/off
+
+### Echo
+
+- Pot 1 - A1 -> gain line in
+- Pot 2 - A2 -> delay time
+- Pot 3 - A3 -> decay
+- Pot 4 - A4 -> Reverb time
+- Btn 1 - D0 -> Toggle - effects on/off
+- Btn 2 - D1 -> Momentary switch - reverb on/off
+
+
+## Teensy pinout
+
+Below is the pinout of the Teensy 4.0. You can see there's a built-in LED on pin13, and pins 14-23 can also be used as analog pins (A0-A9). The pins marked with PWM can be used for analog writing to outputs (e.g. fading LEDs or spinning motors faster and slower).
+
+<img src="./images/teensypinout.png" alt="" width="500"/> 
+
+## Note on recording and playback (not used here)
 
 With the record example you can make a recording either with the mix or with the line in on the board. It generates a .raw file that you can import into Audacity and convert into something else. It overwrites the file every time you record and recording time is 9-s	10 secs or so
 
-## characters
+## Kids workshop outline 
 
-The idea is that the participants in the workshop pick a sensor (pickup coil, piezo, solar cell, dynamo, mic(?)) connect it to th amp and experiment to create an 'instrument' with it. 
-Then, when and if they have something that sounds reasonally nice, they pick one if 4/5 characters, these are filters created with the teensy (much like a guitar effect pedal). We call these *characters*.
-Each *character* is basically a teensy filter with some buttons/knobs to control the parameters. Volume can be controlled on the speaker. 
+Sounds are in all things & materials, by moving/scratching/knocking/hitting/dropping/stroking them. Electronic sounds are also all around us. These often start very small but we can make them bigger with a speaker that has an amplifier so we can hear them. Turn the volume low before turning it on, and slowly turn it up. Try to be mindful of making really loud noise, it can distress people. 
 
-1. Freeverb - input -> output. (heerko)
-   controls: knob 1 - mix (unfiltered/filtered)
-             knob 2 - roomsize
-             knob 3 - damping.
+**0. What are we going to do?**
 
-2. Bitcrusher (heerko)
-   controls: crushBits/samplerate. could be knob or buttons. tbd. 
-3. Echo (loes)
-   controls: delay
-4. Flange (loes)
-   controls: ? (on/off)? numVoices?
-3. Pitchshift?
+We made some sound parasites, but we don't know them very well yet. They don't have names and we don't know their mood and personality. Can you help us imagine who they are? what kind of sounds can they find? What kind of sounds can they make? How do they talk to each other? 
+
+**1. Explore the probes**
+
+Pick a _probe_ (e.g. pickup coil, piezo, solar cell, dynamo) and connect it to a speaker. Explore what sounds you can find with the probe. Holding, pressing or clamping the probes against different objects and materials, and then creating vibrations on or around them, will result in different sounds. 
+
+How does it sound? Can you describe what it sounds like? What is its mood? 
+
+**2. Sonic microdialogue**
+
+Find someone who also has a sound parasite. Let them talk to each other in their own language. 
+
+* How would they tell each other secrets? 
+* How would they tell each other they love each other? 
+* How would the sound if they were annoyed with each other?
+
+**3. Explore one of the parasites**
+
+These probes and speakers are like a rough sketch of a sound personality. They're a bit sharp and shouty, and not so refined yet. So we've created two sound parasites with different characters. These boxes eat the sounds, digest them, and spit them out again in a different way. Now plug your probe into the parasite (IN) and connect the speaker on the other side (OUT). What happens when you press the buttons and turn the knobs?
+
+   _What kinds of sounds do you discover now? How would you describe them?_
+
+The knobs and buttons are nice, but don't forget you can still plug in different probes, surfaces and materials at this stage too! 
+
+**4. Sonic microdialogue**
+
+ Find someone who also has a sound parasite. Let them talk to each other in their own language, this time using the knobs and buttons too. 
+
+* How would they tell each other secrets? 
+* How would they tell each other they love each other? 
+* How would the sound if they were annoyed with each other?
+
+**5. Who is your sound parasite?** 
+
+Give it a name! Now you've only heard it, but what would it look like? Draw it here.
+
+**6. Noise Parade**
+
+Once we have a few sound parasites, let's take them for a walk. Here comes the noise parade!
 
 
 
 
-
-## Ideas
-
-We can program this set up to add reverb/echo and trim/filter the sounds we get with the coils, motors and pickup mics. 
-
-There's endless more variations to do with the pickup mics, running sounds through different trash materials. Or creating a feedback loop from piezo in to piezo out. 
-
-We could also let the teensy create the sounds. The guitar examples can play chords for example which is quite cool. Other instruments also possible. Ordered a bunch of piezo films and disks to play with. 
-
-Instead of a out-of-the-box consumer speaker we could also drive alternative/modified speakers like a corked speaker, pager motor, etc. to distort the sounds. 
 
