@@ -1,101 +1,80 @@
-// Advanced Microcontroller-based Audio Workshop
-//
-// http://www.pjrc.com/store/audio_tutorial_kit.html
-// https://hackaday.io/project/8292-microcontroller-audio-workshop-had-supercon-2015
-// 
-// Part 1-2: Test Hardware
-//
-// Simple beeping is pre-loaded on the Teensy, so
-// it will create sound and print info to the serial
-// monitor when plugged into a PC.
-//
-// This program is supposed to be pre-loaded before
-// the workshop, so Teensy+Audio will beep when
-// plugged in.
-
-#include <Audio.h>
-#include <Wire.h>
-#include <SD.h>
-#include <SPI.h>
-#include <SerialFlash.h>
 #include <Bounce.h>
+#include <Audio.h>
 
-AudioSynthWaveform    waveform1;
-AudioOutputI2S        i2s1;
-AudioConnection       patchCord1(waveform1, 0, i2s1, 0);
-AudioConnection       patchCord2(waveform1, 0, i2s1, 1);
-AudioControlSGTL5000  sgtl5000_1;
+#define B1 0
+#define B2 1
 
-Bounce button0 = Bounce(0, 15);
-Bounce button1 = Bounce(1, 15);
-Bounce button2 = Bounce(2, 15);
+AudioSynthWaveform waveform1;  //xy=235.0833282470703,232.08334350585938
+AudioInputI2S i2s1;            //xy=238.0833282470703,154.08334350585938
+AudioMixer4 mixer1;            //xy=409.0833282470703,230.0833282470703
+AudioOutputI2S i2s2;           //xy=610.0833129882812,211.08334350585938
+AudioConnection patchCord1(waveform1, 0, mixer1, 1);
+AudioConnection patchCord2(i2s1, 0, mixer1, 0);
+AudioConnection patchCord3(mixer1, 0, i2s2, 0);
+AudioConnection patchCord4(mixer1, 0, i2s2, 1);
+AudioControlSGTL5000 sgtl5000_1;  //xy=565.0833129882812,454.0833435058594
 
-int count=1;
-int a1history=0, a2history=0, a3history=0;
+
+Bounce btn1 = Bounce(B1, 5);  // cycles the bitcrusher through all bitdepths
+Bounce btn2 = Bounce(B2, 5);  //cycles the bitcrusher through some key samplerates
+
+bool btn1_state, btn2_state, btn3_state;
+int knob_A1, knob_A2, knob_A3, knob_A4;
+
+unsigned long timer = 0;
+bool playBeep = false;
 
 void setup() {
-  AudioMemory(10);
-  pinMode(0, INPUT_PULLUP);
-  pinMode(1, INPUT_PULLUP);
-  pinMode(2, INPUT_PULLUP);
-  Serial.begin(115200);
+  Serial.begin(9600);
+  delay(3000);
+  Serial.println("Started.");
+
+  pinMode(B1, INPUT_PULLUP);
+  pinMode(B2, INPUT_PULLUP);
+
+  AudioMemory(200);
+
   sgtl5000_1.enable();
-  sgtl5000_1.volume(0.3);
+  sgtl5000_1.volume(0.5);
+  sgtl5000_1.inputSelect(AUDIO_INPUT_LINEIN);
+  sgtl5000_1.lineInLevel(30);  //sensitivity of the line in (0-15?)
+
+  mixer1.gain(0, 0.5);
+  mixer1.gain(1, 0.5);
+
   waveform1.begin(WAVEFORM_SINE);
-  delay(1000);
-  button0.update();
-  button1.update();
-  button2.update();
-  a1history = analogRead(A1);
-  a2history = analogRead(A2);
-  a3history = analogRead(A3);
-}
-
-
-
-
-void loop() {
-  Serial.print("Beep #");
-  Serial.println(count);
-  count = count + 1;
   waveform1.frequency(440);
   waveform1.amplitude(0.9);
-  wait(250);
-  waveform1.amplitude(0);
-  wait(1750);
+
+  delay(1000);
 }
 
-void wait(unsigned int milliseconds)
-{
-  elapsedMillis msec=0;
+void loop() {
+  knob_A1 = analogRead(A1);
+  knob_A2 = analogRead(A2);
+  knob_A3 = analogRead(A3);
+  knob_A4 = analogRead(A4);
 
-  while (msec <= milliseconds) {
-    button0.update();
-    button1.update();
-    button2.update();
-    if (button0.fallingEdge()) Serial.println("Button (pin 0) Press");
-    if (button1.fallingEdge()) Serial.println("Button (pin 1) Press");
-    if (button2.fallingEdge()) Serial.println("Button (pin 2) Press");
-    if (button0.risingEdge()) Serial.println("Button (pin 0) Release");
-    if (button1.risingEdge()) Serial.println("Button (pin 1) Release");
-    if (button2.risingEdge()) Serial.println("Button (pin 2) Release");
-    int a1 = analogRead(A1);
-    int a2 = analogRead(A2);
-    int a3 = analogRead(A3);
-    if (a1 > a1history + 50 || a1 < a1history - 50) {
-      Serial.print("Knob (pin A1) = ");
-      Serial.println(a1);
-      a1history = a1;
-    }
-    if (a2 > a2history + 50 || a2 < a2history - 50) {
-      Serial.print("Knob (pin A2) = ");
-      Serial.println(a2);
-      a2history = a2;
-    }
-    if (a3 > a3history + 50 || a3 < a3history - 50) {
-      Serial.print("Knob (pin A3) = ");
-      Serial.println(a3);
-      a3history = a3;
+  Serial.print("A1=");
+  Serial.print(knob_A1);
+  Serial.print(", A2=");
+  Serial.print(knob_A2);
+  Serial.print(", A3=");
+  Serial.print(knob_A3);
+  Serial.print(", A4=");
+  Serial.print(knob_A4);
+  Serial.print(", B1=");
+  Serial.print(digitalRead(B1));
+  Serial.print(", B2=");
+  Serial.println(digitalRead(B2));
+
+  if (millis() > timer + 500) {
+    timer = millis();
+    playBeep = !playBeep;
+    if (playBeep) {
+      waveform1.amplitude(0.9);
+    } else {
+      waveform1.amplitude(0);
     }
   }
 }

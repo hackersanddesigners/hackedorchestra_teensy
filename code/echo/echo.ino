@@ -60,6 +60,8 @@ void setup() {
   pinMode(1, INPUT_PULLUP);
   pinMode(2, INPUT_PULLUP);
 
+  pinMode(LED_PIN, OUTPUT);
+
   // mixer 1 for echo
   mixer1.gain(0, 0.7);
   mixer1.gain(3, 0.7);
