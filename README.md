@@ -48,10 +48,6 @@ Check it out here:
 * [momentary switch 12mm](https://www.tinytronics.nl/shop/en/switches/manual-switches/pcb-switches/tactile-pushbutton-switch-momentary-4pin-12*12*7.3mm) € 0,12 via tinytronics
 * [cap for momentary switch 12 mm](https://www.tinytronics.nl/shop/en/components/knobs,-caps-and-covers/button-cap-for-tactile-pushbutton-switch-momentary-12x12x7.3mm-yellow) €0,12 via Tinytronics
 * [toggle switch](https://www.tinytronics.nl/shop/en/switches/manual-switches/slide-switches/small-switch-for-pcb-or-breadboard) € 0,17 via tinytronics
-* [2x 3D printed 6.3mm jack chassis holder by Volkan Dinçer](https://www.thingiverse.com/volkandncr/designs)
-
-
-<img src="./images/jack_holder_volkan_dincer.png" alt="3D model for a jack holder by Volkan Dinçer" width="400"/> 
 
 
 **Plus: for version inside a case** 
