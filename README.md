@@ -8,6 +8,11 @@ The sound parasites can be mounted in tin cans (saluting the early DIY electroni
 
 This work is inspired by Nic Collins' *Handmade Electronic Music* and Paul Stoffsregen's work on the Teensy + Audio Module as shown in [this workshop](https://www.pjrc.com/store/audio_tutorial_kit.html). 
 
+## Today's workshop outline
+
+Check it out here: 
+
+[https://etherpad.hackersanddesigners.nl/p/HackedOrchestra_13Oct](https://etherpad.hackersanddesigners.nl/p/HackedOrchestra_13Oct)
 
 <img src="./images/elisabethbas.jpeg" alt="" width="600"/> 
 
@@ -69,21 +74,31 @@ This work is inspired by Nic Collins' *Handmade Electronic Music* and Paul Stoff
 
 The teensy board will be pressed into the breadboard, the male pins of the female header should stick out of the bottom of the board. The audio shield will go on top of it, so needs the male header pins sticking out downwards also. So we want to: 
 
-* Solder the female header strips with the long legs on top of the teensy board 
+* Solder the female header strips with the long legs through the teensy board 
 * solder the male header strips to the bottom of the audio shield
 * solder the small angled headers to the line in and line out on the audio shield 
 
-<img src="./images/placeholder.png" alt="" width="400"/> 
 
+<img src="./images/headers_soldered.jpg" alt="" width="700"/> 
 
-* assemble the breadboard following the picture below
-* connect a piezo to the line in on the audio shield, and a jack cable on line out (goes to speaker)
-* press the audio shield on top of the teensy
+* Gently press the header on top of the teensy board. Be careful not to bend the legs.
 
-<img src="./images/fritz.png" alt="" width="800"/> 
+<img src="./images/linein_out.jpg" alt="" width="400"/> 
+
+* You can connect the left jack receptacle to the LINE IN pins (black to GND, yellow to SIGNAL L)
+* And connect the right jack receptacle to the LINE OUT pins (black to GND, yellow to SIGNAL L)
+
+<img src="./images/proto_setup.jpg" alt="" width="400"/> 
+
+* With this in place you can connect a probe (e.g. a piezo) as input on the line in (left), and a jack cable going to the speaker on the line out (right). 
 
 <img src="./images/audioshield_lineinout.png" alt="" width="400"/> 
 
+**Breadboarding**
+
+You will need to connect 4 potentiometers (turning knobs), a toggle switch, and a momentary switch to the breadboard. You can follow this wiring diagram. You might have a switch that looks slightly different. Just make sure to connect one leg to ground, and the other to the pin 0 (for a slide or toggle switch) or pin 1 for the momentary switch (pushbutton).
+
+<img src="./images/fritz2.jpg" alt="" width="800"/> 
 
 
 ### Assembling inside a box
@@ -125,26 +140,40 @@ More info on other OS: [https://www.pjrc.com/teensy/td_download.html](https://ww
 
 **Board**
 
-Choose Teensy 4.0 from board menu
+Choose Teensy 4.0 from board menu under > Tools > Board
 
 **Port**
 
 When plugged in, a section called "Teensy Ports" shows up under > Tools > Port. On mac the port looks something like */dev/cu.usbmodemxxxxxxx Serial (Teensy 4.0)*
 
-There might sometimes be some hassle with ports, then hit boot button and try again
+There might sometimes be some hassle with ports, then hit boot button on the teensy board and try again. Check the monitor for errors and hints on how to trouble shoot.
 
 
 ## Hardware test
 
-First we want to check if all the hardware is wired correctly and working. Open the "hardware_test" from the code folder. This allows us to check the following: 
+First we want to check if all the hardware is wired correctly and working. Open the "hardware_test" from the code folder in this repository and upload it to the board (you can find it in the menu under > Sketch > Upload). 
 
-* turn on LED to show board is powered and working
-* show values of the switches (0 or 1) and potmeters (0-1023) via the serial monitor
-* play a beep that we should hear from the speaker we attached
-* check the line in is working with a feedthrough code (what comes in should come out the speaker)
+1. Is the teensy chip programmed and live?
+> if an LED on the board is blinking it means the board is powered and working!
 
-Upload the sketch and open the serial monitor. Check that the values for the pots and switches change when you press or turn them. Check the line in with a piezo disk. 
+2. Is the line out to the speaker functioning? 
+> If you hear a beep every other second, your line out works!
 
+3. Is the line in (probe to board) functioning? 
+> if you touch the piezo disk connected to the line in, you should hear its sounds amplified through the speaker. 
+
+3. Is the Teensy able to communicate with your computer? 
+>  Open the serial monitor (in the menu under > Tools > Serial Monitor)
+> Select teensy in the "Serial" section under > Tools > Port)
+> Note: you need to switch between ports everytime when switching between uploading and using the serial monitor
+> If you see numbers appearing continuously, the Teensy can communicate with the computer!
+
+4. Are the knobs and switches wired correctly?
+> Turn one of the knobs: if the numbers change (between 0-1023) as you turn, this knob is working correctly!
+> Try the same for the other knobs
+> Try the switches, if you press them or slide/toggle them the serial monitor should alternate between 0s and 1s (for voltage LOW or HIGH)
+
+ALL SYSTEMS GO! Let's look at the code.
 
 ## Audio system design tool 
 
@@ -154,12 +183,22 @@ The hardware test defines a the audio elements above the setup. This is generate
 
 Open in **SAFARI**! In Firefox you can drag and drop but not delete things.
 
+You can import the code from Arduino to look at the nodes and connections: 
+
+<img src="./images/import_code.png" alt="" width="500"/> 
+<img src="./images/nodes.png" alt="" width="500"/> 
+
+Or you can create your own nodes and connections and export it with the EXPORT button. Then you copy these settings into your Arduino sketch (should be above the setup() function).
+
 
 ## Our sound parasites
 
-Now that everything works we can upload the code for the sound parasites. There's two types: one with echo/delay and one with a granular effect and pitchshifting. Both have a reverb switch as well. 
+Now we verified that everything works we can upload the code for the sound parasites. There's two types: one with echo (delay) and one with a granular effect/pitchshifting. Both have a reverb switch programmed in as well. 
 
-### Granular Effect / Pitch shift
+
+### Pitch shift
+
+If you look in the code, you can see that we commented what everything does. Here's an overview as well: 
 
 - Pot 1 - A1 -> Input gain
 - Pot 2 - A2 -> Granular pitchShift grainLength
@@ -188,53 +227,13 @@ Below is the pinout of the Teensy 4.0. You can see there's a built-in LED on pin
 
 With the record example you can make a recording either with the mix or with the line in on the board. It generates a .raw file that you can import into Audacity and convert into something else. It overwrites the file every time you record and recording time is 9-s	10 secs or so
 
-## Kids workshop outline 
 
-Sounds are in all things & materials, by moving/scratching/knocking/hitting/dropping/stroking them. Electronic sounds are also all around us. These often start very small but we can make them bigger with a speaker that has an amplifier so we can hear them. Turn the volume low before turning it on, and slowly turn it up. Try to be mindful of making really loud noise, it can distress people. 
+## Today's workshop outline
 
-**0. What are we going to do?**
+Check it out here: 
 
-We made some sound parasites, but we don't know them very well yet. They don't have names and we don't know their mood and personality. Can you help us imagine who they are? what kind of sounds can they find? What kind of sounds can they make? How do they talk to each other? 
+[https://etherpad.hackersanddesigners.nl/p/HackedOrchestra_13Oct](https://etherpad.hackersanddesigners.nl/p/HackedOrchestra_13Oct)
 
-**1. Explore the probes**
+## Kids workshop outline
 
-Pick a _probe_ (e.g. pickup coil, piezo, solar cell, dynamo) and connect it to a speaker. Explore what sounds you can find with the probe. Holding, pressing or clamping the probes against different objects and materials, and then creating vibrations on or around them, will result in different sounds. 
-
-How does it sound? Can you describe what it sounds like? What is its mood? 
-
-**2. Sonic microdialogue**
-
-Find someone who also has a sound parasite. Let them talk to each other in their own language. 
-
-* How would they tell each other secrets? 
-* How would they tell each other they love each other? 
-* How would the sound if they were annoyed with each other?
-
-**3. Explore one of the parasites**
-
-These probes and speakers are like a rough sketch of a sound personality. They're a bit sharp and shouty, and not so refined yet. So we've created two sound parasites with different characters. These boxes eat the sounds, digest them, and spit them out again in a different way. Now plug your probe into the parasite (IN) and connect the speaker on the other side (OUT). What happens when you press the buttons and turn the knobs?
-
-   _What kinds of sounds do you discover now? How would you describe them?_
-
-The knobs and buttons are nice, but don't forget you can still plug in different probes, surfaces and materials at this stage too! 
-
-**4. Sonic microdialogue**
-
- Find someone who also has a sound parasite. Let them talk to each other in their own language, this time using the knobs and buttons too. 
-
-* How would they tell each other secrets? 
-* How would they tell each other they love each other? 
-* How would the sound if they were annoyed with each other?
-
-**5. Who is your sound parasite?** 
-
-Give it a name! Now you've only heard it, but what would it look like? Draw it here.
-
-**6. Noise Parade**
-
-Once we have a few sound parasites, let's take them for a walk. Here comes the noise parade!
-
-
-
-
-
+[https://etherpad.hackersanddesigners.nl/p/HackedOrchestra_7Oct](https://etherpad.hackersanddesigners.nl/p/HackedOrchestra_7Oct)

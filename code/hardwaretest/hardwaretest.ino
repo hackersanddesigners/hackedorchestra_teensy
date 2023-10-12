@@ -4,6 +4,7 @@
 #define B1 0
 #define B2 1
 
+// GUItool: begin automatically generated code
 AudioSynthWaveform waveform1;  //xy=235.0833282470703,232.08334350585938
 AudioInputI2S i2s1;            //xy=238.0833282470703,154.08334350585938
 AudioMixer4 mixer1;            //xy=409.0833282470703,230.0833282470703
@@ -13,6 +14,7 @@ AudioConnection patchCord2(i2s1, 0, mixer1, 0);
 AudioConnection patchCord3(mixer1, 0, i2s2, 0);
 AudioConnection patchCord4(mixer1, 0, i2s2, 1);
 AudioControlSGTL5000 sgtl5000_1;  //xy=565.0833129882812,454.0833435058594
+// GUItool: end automatically generated code
 
 
 Bounce btn1 = Bounce(B1, 5);  // cycles the bitcrusher through all bitdepths
