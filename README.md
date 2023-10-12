@@ -58,7 +58,20 @@ Check it out here:
 * [JST-PH compatibel connector, 2 pos](https://www.tinytronics.nl/shop/en/cables-and-connectors/cables-and-adapters/jst-compatible/jst-2.0mm-connector-with-cable-ph2.0-2-pins) € 0,33 via Tinytronics
 * [perfboard 2.54 mm spacing with lanes/strips](https://www.tinytronics.nl/shop/en/tools-and-mounting/prototyping-supplies/experiment-pcbs/experiment-pcb-6.5cm*14.5cm-lanes) €1,65 via TinyTronics
 
+# Sounds Around: Material Symmetries
 
+There are lots of signals around us that can be be sonified and/or amplified. What goes up, must come down, what gives will receive. A speaker is a mic is a speaker, a motor is a generator is a motor. Silent signals, textures, movements, vibrations: all can be explored with these simple probes. Wire one up and find out: 
+
+<img src="./images/1.electromagnetic.png" alt="" width="500"/> 
+
+<img src="./images/2.pressure.png" alt="" width="500"/> 
+
+<img src="./images/3.dynamo.png" alt="" width="500"/> 
+
+<img src="./images/4.solar.png" alt="" width="500"/> 
+
+
+# Building Sound Parasites
 
 ## Assembling the circuit
 
