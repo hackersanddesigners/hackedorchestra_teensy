@@ -62,13 +62,13 @@ Check it out here:
 
 There are lots of signals around us that can be be sonified and/or amplified. What goes up, must come down, what gives will receive. A speaker is a mic is a speaker, a motor is a generator is a motor. Silent signals, textures, movements, vibrations: all can be explored with these simple probes. Wire one up and find out: 
 
-<img src="./images/1.electromagnetic.png" alt="" width="500"/> 
+<img src="./images/1.electromagnetic.png" alt="" width="750"/> 
 
-<img src="./images/2.pressure.png" alt="" width="500"/> 
+<img src="./images/2.pressure.png" alt="" width="750"/> 
 
-<img src="./images/3.dynamo.png" alt="" width="500"/> 
+<img src="./images/3.dynamo.png" alt="" width="750"/> 
 
-<img src="./images/4.solar.png" alt="" width="500"/> 
+<img src="./images/4.solar.png" alt="" width="750"/> 
 
 
 # Building Sound Parasites
