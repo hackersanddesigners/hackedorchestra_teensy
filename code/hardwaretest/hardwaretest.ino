@@ -66,7 +66,7 @@ void loop() {
   Serial.print(", B1=");
   Serial.print(digitalRead(B1));
   Serial.print(", B2=");
-  Serial.print(digitalRead(B2));
+  Serial.println(digitalRead(B2));
 
   if (millis() > timer + 500) {
     timer = millis();
