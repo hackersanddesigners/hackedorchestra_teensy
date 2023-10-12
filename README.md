@@ -181,8 +181,8 @@ Open in **SAFARI**! In Firefox you can drag and drop but not delete things.
 
 You can import the code from Arduino to look at the nodes and connections: 
 
-<img src="./images/import_code.png" alt="" width="500"/> 
-<img src="./images/nodes.png" alt="" width="500"/> 
+<img src="./images/import_code.png" alt="" width="750"/> 
+<img src="./images/nodes.png" alt="" width="750"/> 
 
 Or you can create your own nodes and connections and export it with the EXPORT button. Then you copy these settings into your Arduino sketch (should be above the setup() function).
 
