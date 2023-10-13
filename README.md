@@ -16,6 +16,13 @@ Check it out here:
 
 <img src="./images/elisabethbas.jpeg" alt="" width="600"/> 
 
+### Wishlist based on workshop
+
+* rising/fallingEdge function not great fit w toggle switch, change to simple digitalRead
+* maybe toggle not necessary, effect is off when all knobs are low anyway
+* find out how to protect line in
+* more descriptive serial output for the effect sketches
+* controlling line in level w knob has zero effect, just confusing
 
 ## BOM 
 
