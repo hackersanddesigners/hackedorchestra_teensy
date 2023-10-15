@@ -23,8 +23,8 @@ Check it out here:
 * find out how to protect line in
 * more descriptive serial output for the effect sketches
 * controlling line in level w knob has zero effect, just confusing
-~~* re-do wiring diagram (DONE)~~
-~~* write code for low pass, high pass, band pass filter (DONE)~~
+* ~~re-do wiring diagram (DONE)~~
+* ~~ write code for low pass, high pass, band pass filter (DONE)~~
 
 ## BOM 
 
