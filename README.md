@@ -24,7 +24,7 @@ Check it out here:
 * more descriptive serial output for the effect sketches
 * controlling line in level w knob has zero effect, just confusing
 * ~~re-do wiring diagram (DONE)~~
-* ~~ write code for low pass, high pass, band pass filter (DONE)~~
+* ~~write code for low pass, high pass, band pass filter (DONE)~~
 
 ## BOM 
 
