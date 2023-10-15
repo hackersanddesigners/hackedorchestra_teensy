@@ -18,13 +18,13 @@ Check it out here:
 
 ### Wishlist based on workshop
 
-* rising/fallingEdge function not great fit w toggle switch, change to simple digitalRead
-* maybe toggle not necessary, effect is off when all knobs are low anyway
+* ~~rising/fallingEdge function not great fit w toggle switch, change to simple digitalRead~~
 * find out how to protect line in
-* more descriptive serial output for the effect sketches
-* controlling line in level w knob has zero effect, just confusing
+* ~~more descriptive serial output for the effect sketches (DONE)~~
+* ~~controlling line in level w knob doesnt seem to work? (FIXED)~~
 * ~~re-do wiring diagram (DONE)~~
 * ~~write code for low pass, high pass, band pass filter (DONE)~~
+* think about how to implement EQ filters (low shelf, high shelf as well as filtering)
 
 ## BOM 
 
