@@ -26,6 +26,9 @@ int knob_A1, knob_A2, knob_A3, knob_A4;
 unsigned long timer = 0;
 bool playBeep = false;
 
+#define LED_PIN 13  // built-in led
+bool ledState = false;
+
 void setup() {
   Serial.begin(9600);
   delay(3000);
@@ -44,9 +47,9 @@ void setup() {
   mixer1.gain(0, 0.5);
   mixer1.gain(1, 0.5);
 
- waveform1.begin(WAVEFORM_SINE);
- waveform1.frequency(440);
- waveform1.amplitude(0.9);
+  waveform1.begin(WAVEFORM_SINE);
+  waveform1.frequency(440);
+  waveform1.amplitude(0.9);
 
   delay(1000);
 }
@@ -57,25 +60,27 @@ void loop() {
   knob_A3 = analogRead(A3);
   knob_A4 = analogRead(A4);
 
-  Serial.print("A1=");
+  Serial.print("A1 = ");
   Serial.print(knob_A1);
-  Serial.print(", A2=");
+  Serial.print(" , A2 = ");
   Serial.print(knob_A2);
-  Serial.print(", A3=");
+  Serial.print(" , A3 = ");
   Serial.print(knob_A3);
-  Serial.print(", A4=");
+  Serial.print(" , A4 = ");
   Serial.print(knob_A4);
-  Serial.print(", B1=");
+  Serial.print(" , B1 = ");
   Serial.print(digitalRead(B1));
-  Serial.print(", B2=");
+  Serial.print(" , B2 = ");
   Serial.println(digitalRead(B2));
 
   if (millis() > timer + 500) {
     timer = millis();
     playBeep = !playBeep;
     if (playBeep) {
+      digitalWrite(LED_PIN, ledState);
       waveform1.amplitude(0.9);
     } else {
+      digitalWrite(LED_PIN,!ledState);
       waveform1.amplitude(0);
     }
   }

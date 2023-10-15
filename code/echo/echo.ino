@@ -7,7 +7,6 @@
   Pot 4 - A4 -> Reverb time
   Btn 1 - D0 -> Toggle - effects on/off
   Btn 2 - D1 -> Momentary switch - reverb on/off
-  Btn 3 - D2 -> Momentary - Flange on >> NOT USED
 
 **/
 
@@ -35,17 +34,18 @@ AudioConnection patchCord10(mixer2, 0, i2s1, 1);
 AudioControlSGTL5000 sgtl5000_1;  //xy=927.6000061035156,188.0999984741211
 // GUItool: end automatically generated code
 
+int button1 = 0;
+Bounce button2 = Bounce(1, 15);  //momentary switch
 
-Bounce button1 = Bounce(0, 15);
-Bounce button2 = Bounce(1, 15);
-Bounce button3 = Bounce(2, 15);  // 15 = 15 ms debounce time
+bool isReverb = false;
+float reverbTime;
 
 bool button2_pressed = false;
 unsigned long updateCounterMs;
 int lastDelayTime = 0;
 
-#define LED_PIN 13 // built-in led
-unsigned long timer = 0; // timer for blink led
+#define LED_PIN 13        // built-in led
+unsigned long timer = 0;  // timer for blink led
 bool ledState = false;
 
 void setup() {
@@ -54,11 +54,10 @@ void setup() {
   sgtl5000_1.enable();     // enable control panel
   sgtl5000_1.volume(0.5);  // set volume (max 0.8 is good)
   sgtl5000_1.inputSelect(AUDIO_INPUT_LINEIN);
-  sgtl5000_1.lineInLevel(30);  //sensitivity of the line in (0-15?)
+  sgtl5000_1.lineInLevel(15);  //sensitivity of the line in (0-15?)
 
   pinMode(0, INPUT_PULLUP);
   pinMode(1, INPUT_PULLUP);
-  pinMode(2, INPUT_PULLUP);
 
   pinMode(LED_PIN, OUTPUT);
 
@@ -77,16 +76,22 @@ void setup() {
   reverb1.reverbTime(10);
 
   delay1.delay(0, 200);  //length of delay in ms
+
+  for (int i = 0; i < 2; i++) {
+    digitalWrite(LED_PIN, HIGH);
+    delay(250);
+    digitalWrite(LED_PIN, LOW);
+    delay(250);
+  }
+
   delay(1000);
-  
+
   timer = millis();
 }
 
 void loop() {
   // read pushbuttons
-  button1.update();
   button2.update();
-  button3.update();
 
   // read knobs, scale to 0-1.0 numbers
   float knobA1 = (float)analogRead(A1) / 1023.0;  // sets lineInLevel
@@ -95,14 +100,12 @@ void loop() {
   float knobA4 = (float)analogRead(A4) / 1023.0;  // set reverb room size
 
   // control the gain on line in w knob
-  // int gainLineIn = knobA1 * 30;
-  // sgtl5000_1.lineInLevel(gainLineIn);  // is level of line in!
+  int lineInLevel = map(knobA1, 0, 1, 0, 15);
+  sgtl5000_1.lineInLevel(lineInLevel);
 
   //control the decay of the feedback signal float 0-1 with 1 = no decay
   float feedback = knobA2;
   mixer1.gain(3, feedback);
-  Serial.print("feedback decay = ");
-  Serial.println(feedback);
 
   //control the delay time (ms)
   int delaytime = knobA3 * 400;  //map(knob3, 0, 1023, 0, 400);
@@ -113,40 +116,61 @@ void loop() {
     lastDelayTime = delaytime;
   }
 
-  Serial.print("delaytime = ");
-  Serial.println(delaytime);
-
-
-  if (button1.fallingEdge()) {
-    // bypass all effects
+  if (digitalRead(button1) == 0) {
+    // if low, turn on all effects
     mixer3.gain(0, 0);
     mixer3.gain(1, 1);
+    digitalWrite(LED_PIN, HIGH);
+    Serial.print("lineInLevel =  ");
+    Serial.print(lineInLevel);
+    Serial.print(" |  feedback decay =  ");
+    Serial.print(feedback);
+    Serial.print(" |  delaytime =  ");
+    Serial.print(delaytime);
+    Serial.print(" |  reverbTime =  ");
+    if (isReverb == 1) {
+      Serial.println(reverbTime);
+    } else {
+      Serial.println(isReverb);
+    }
   }
-  if (button1.risingEdge()) {
-    // mix in the effects
+  if (digitalRead(button1) == 1) {
+    // if high, bypass effect (feedthrough line in)
     mixer3.gain(0, 1);
     mixer3.gain(1, 0);
+    digitalWrite(LED_PIN, LOW);
+    Serial.print("lineInLevel =  ");
+    Serial.print(lineInLevel);
+    Serial.print(" |  filters OFF ");
+    Serial.print(" |  reverbTime =  ");
+    if (isReverb == 1) {
+      Serial.println(reverbTime);
+    } else {
+      Serial.println(isReverb);
+    }
   }
 
   if (button2.fallingEdge()) { button2_pressed = true; }
   if (button2.risingEdge()) { button2_pressed = false; }
 
-  float reverbTime = knobA1 * 20;
+  reverbTime = knobA4 * 20;  //was knobA4, why>????
   if (button2_pressed) {
-    Serial.print("with reverbTime ");
-    Serial.println(reverbTime);
+    isReverb = true;
+    // Serial.print("with reverbTime ");
+    // Serial.println(reverbTime);
     reverb1.reverbTime(reverbTime);
     mixer2.gain(0, 0);
     mixer2.gain(1, 1);
   } else {
+    isReverb = false;
     mixer2.gain(0, 1);
     mixer2.gain(1, 0);
     reverb1.reverbTime(0);
   }
 
-  if (millis() > timer + 500) {
-    digitalWrite(LED_PIN, ledState);
-    ledState = !ledState;
-    timer = millis();
-  }
+  // if (millis() > timer + 500) {
+  //   digitalWrite(LED_PIN, ledState);
+  //   ledState = !ledState;
+  //   timer = millis();
+  // }
 }
