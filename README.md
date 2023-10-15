@@ -23,6 +23,8 @@ Check it out here:
 * find out how to protect line in
 * more descriptive serial output for the effect sketches
 * controlling line in level w knob has zero effect, just confusing
+~~* re-do wiring diagram (DONE)~~
+~~* write code for low pass, high pass, band pass filter (DONE)~~
 
 ## BOM 
 
@@ -114,7 +116,7 @@ The teensy board will be pressed into the breadboard, the male pins of the femal
 
 You will need to connect 4 potentiometers (turning knobs), a toggle switch, and a momentary switch to the breadboard. You can follow this wiring diagram. You might have a switch that looks slightly different. Just make sure to connect one leg to ground, and the other to the pin 0 (for a slide or toggle switch) or pin 1 for the momentary switch (pushbutton).
 
-<img src="./images/fritz2.jpg" alt="" width="800"/> 
+<img src="./images/fritz2.png" alt="" width="800"/> 
 
 
 ### Assembling inside a box

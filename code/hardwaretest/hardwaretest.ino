@@ -44,9 +44,9 @@ void setup() {
   mixer1.gain(0, 0.5);
   mixer1.gain(1, 0.5);
 
-  waveform1.begin(WAVEFORM_SINE);
-  waveform1.frequency(440);
-  waveform1.amplitude(0.9);
+ waveform1.begin(WAVEFORM_SINE);
+ waveform1.frequency(440);
+ waveform1.amplitude(0.9);
 
   delay(1000);
 }
