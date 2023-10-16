@@ -23,8 +23,7 @@ Check it out here:
 * ~~more descriptive serial output for the effect sketches (DONE)~~
 * ~~controlling line in level w knob doesnt seem to work? (FIXED)~~
 * ~~re-do wiring diagram (DONE)~~
-* ~~write code for low pass, high pass, band pass filter (DONE)~~
-* think about how to implement EQ filters (low shelf, high shelf as well as filtering)
+* ~~write equalizer code for low pass, high pass, band pass filter (DONE)~~
 
 ## BOM 
 
