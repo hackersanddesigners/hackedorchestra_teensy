@@ -8,7 +8,7 @@ The sound parasites can be mounted in tin cans (saluting the early DIY electroni
 
 This work is inspired by Nic Collins' *Handmade Electronic Music* and Paul Stoffsregen's work on the Teensy + Audio Module as shown in [this workshop](https://www.pjrc.com/store/audio_tutorial_kit.html). 
 
-## Today's workshop outline
+## Workshop outline 13 oct 23
 
 Check it out here: 
 
@@ -245,7 +245,7 @@ Below is the pinout of the Teensy 4.0. You can see there's a built-in LED on pin
 With the record example you can make a recording either with the mix or with the line in on the board. It generates a .raw file that you can import into Audacity and convert into something else. It overwrites the file every time you record and recording time is 9-s	10 secs or so
 
 
-## Today's workshop outline
+## Workshop outline 13 oct 23
 
 Check it out here: 
 
